@@ -1,0 +1,484 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>Docs for page _utilitairesEtGestionErreurs.lib.php</title>
+	<link rel="stylesheet" type="text/css" id="layout" href="../media/layout.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../media/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../media/print.css" media="print">
+</head>
+
+<body>
+<div id="header">
+	<div id="navLinks">
+        
+                                    
+                            	        [ <a href="../classtrees_default.html">Class Tree: default</a> ]
+            [ <a href="../elementindex_default.html">Index: default</a> ]
+        		[ <a href="../elementindex.html">All elements</a> ]		
+	</div>
+	<div id="packagePosition">
+		<div id="packageTitle2">default</div>
+		<div id="packageTitle">default</div>
+		<div id="elementPath"> &middot; </div>
+	</div>
+</div>
+
+<div id="nav" class="small">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	<div id="packages">
+		Packages:
+					<p><a href="../li_default.html">default</a></p>
+			</div>
+
+				<div id="index">
+			<div id="files">
+								Files:<br>
+								<a href="../default/_cAccueil.php.html">		cAccueil.php
+		</a><br>
+			<a href="../default/_cConsultFichesFrais.php.html">		cConsultFichesFrais.php
+		</a><br>
+			<a href="../default/_cSaisieFicheFrais.php.html">		cSaisieFicheFrais.php
+		</a><br>
+			<a href="../default/_cSeConnecter.php.html">		cSeConnecter.php
+		</a><br>
+			<a href="../default/_cSeDeconnecter.php.html">		cSeDeconnecter.php
+		</a><br>
+			<a href="../default/_include---_bdGestionDonnees.lib.php.html">		_bdGestionDonnees.lib.php
+		</a><br>
+			<a href="../default/_include---_fin.inc.php.html">		_fin.inc.php
+		</a><br>
+			<a href="../default/_include---_gestionSession.lib.php.html">		_gestionSession.lib.php
+		</a><br>
+			<a href="../default/_include---_init.inc.php.html">		_init.inc.php
+		</a><br>
+			<a href="../default/_include---_sommaire.inc.php.html">		_sommaire.inc.php
+		</a><br>
+			<a href="../default/_include---_utilitairesEtGestionErreurs.lib.php.html">		_utilitairesEtGestionErreurs.lib.php
+		</a><br>
+				</div>
+			<div id="interfaces">
+							</div>
+			<div id="classes">
+							</div>
+		</div>
+	</div>
+
+<div id="body">
+	    		<h1>Procedural File: _utilitairesEtGestionErreurs.lib.php</h1>
+	<p style="margin: 0px;">Source Location: /include/_utilitairesEtGestionErreurs.lib.php</p>
+	
+<br>
+<br>
+
+<div class="contents">
+<h2>Classes:</h2>
+<dl>
+</dl>
+</div>
+
+<h2>Page Details:</h2>
+<p align="center"><strong>Regroupe les fonctions utilitaires et de gestion des erreurs.
+</strong></p>
+<h4>Tags:</h4>
+<ul>
+	<li><b>todo</b> - fonction estMoisValide à définir complètement ou à supprimer</li>
+</ul>
+<hr>
+<hr>
+<div id="global">
+</div><hr>
+<div id="define">
+</div><hr>
+<div id="function">
+	<a name="functionajouterErreur"></a>
+	<h3>ajouterErreur</h3>
+	<div class="indent">
+		<code>void ajouterErreur(
+ &$tabErr, string $msg, array $tabErr)</code>
+		<p class="linenumber">[line 191]</p>
+		<p align="center"><strong>Ajoute un message dans le tableau des messages d'erreurs.
+</strong></p>
+<p>Ajoute le message $msg en fin de tableau $tabErr. Ce tableau est passé par  référence afin que les modifications sur ce tableau soient visibles de l'appelant.</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">array</span>
+			<b>$tabErr</b> 
+			- 
+			</li>
+					<li>
+			<span class="type">string</span>
+			<b>$msg</b> 
+			- 
+			message</li>
+					<li>
+			<span class="type"></span>
+			<b>&$tabErr</b> 
+			- 
+			</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionconvertirDateAnglaisVersFrancais"></a>
+	<h3>convertirDateAnglaisVersFrancais</h3>
+	<div class="indent">
+		<code>string convertirDateAnglaisVersFrancais(
+$date $date)</code>
+		<p class="linenumber">[line 67]</p>
+		<p align="center"><strong>Transforme une date au format format anglais aaaa-mm-jj vers le format
+</strong></p>
+<p>français jj/mm/aaaa</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - la date au format format français jj/mm/aaaa</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">$date</span>
+			<b>$date</b> 
+			- 
+			au format  aaaa-mm-jj</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionconvertirDateFrancaisVersAnglais"></a>
+	<h3>convertirDateFrancaisVersAnglais</h3>
+	<div class="indent">
+		<code>string convertirDateFrancaisVersAnglais(
+$date $date)</code>
+		<p class="linenumber">[line 56]</p>
+		<p align="center"><strong>Transforme une date au format français jj/mm/aaaa vers le format anglais aaaa-mm-jj
+</strong></p>
+<h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - la date au format anglais aaaa-mm-jj</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">$date</span>
+			<b>$date</b> 
+			- 
+			au format  jj/mm/aaaa</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionestDansAnneeEcoulee"></a>
+	<h3>estDansAnneeEcoulee</h3>
+	<div class="indent">
+		<code>boolean estDansAnneeEcoulee(
+$date $date)</code>
+		<p class="linenumber">[line 80]</p>
+		<p align="center"><strong>Indique si une date est incluse ou non dans l'année écoulée.
+</strong></p>
+<p>Retourne true si la date $date est comprise entre la date du jour moins un an et la  la date du jour. False sinon.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - succès ou échec</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">$date</span>
+			<b>$date</b> 
+			- 
+			date au format jj/mm/aaaa</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionestDate"></a>
+	<h3>estDate</h3>
+	<div class="indent">
+		<code>boolean estDate(
+string $date)</code>
+		<p class="linenumber">[line 34]</p>
+		<p align="center"><strong>Vérifie si une chaîne fournie est bien une date valide, au format JJ/MM/AAAA.
+</strong></p>
+<p>Retrourne true si la chaîne $date est une date valide, au format JJ/MM/AAAA, false sinon.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - succès ou échec</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">string</span>
+			<b>$date</b> 
+			- 
+			date à vérifier</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionestEntierPositif"></a>
+	<h3>estEntierPositif</h3>
+	<div class="indent">
+		<code>boolean estEntierPositif(
+string $valeur)</code>
+		<p class="linenumber">[line 95]</p>
+		<p align="center"><strong>Vérifie si une chaîne fournie est bien numérique entière positive.
+</strong></p>
+<p>Retrourne true si la valeur transmise $valeur ne contient pas d'autres  caractères que des chiffres, false sinon.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - succès ou échec</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">string</span>
+			<b>$valeur</b> 
+			- 
+			chaîne à vérifier</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionfiltrerChainePourNavig"></a>
+	<h3>filtrerChainePourNavig</h3>
+	<div class="indent">
+		<code>string filtrerChainePourNavig(
+string $str)</code>
+		<p class="linenumber">[line 234]</p>
+		<p align="center"><strong>Echappe les caractères considérés spéciaux en HTML par les entités HTML correspondantes.
+</strong></p>
+<p>Renvoie une copie de la chaîne $str à laquelle les caractères considérés spéciaux  en HTML (tq la quote simple, le guillemet double, les chevrons), auront été  remplacés par les entités HTML correspondantes.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - chaîne échappée</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">string</span>
+			<b>$str</b> 
+			- 
+			chaîne à échapper</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionlireDonnee"></a>
+	<h3>lireDonnee</h3>
+	<div class="indent">
+		<code>string lireDonnee(
+string $nomDonnee, [string $valDefaut = &amp;quot;&amp;quot;])</code>
+		<p class="linenumber">[line 169]</p>
+		<p align="center"><strong>Fournit la valeur d'une donnée transmise par la méthode get (url) ou post   (corps de la requête HTTP).
+</strong></p>
+<p>Retourne la valeur de la donnée portant le nom $nomDonnee  reçue dans l'url ou corps de requête,  $valDefaut si aucune donnée de nom $nomDonnee ni dans l'url, ni dans corps.  Si le même nom a été transmis à la fois dans l'url et le corps de la requête,  c'est la valeur transmise par l'url qui est retournée.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - valeur de la donnée</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">string</span>
+			<b>$nomDonnee</b> 
+			- 
+			nom de la donnée</li>
+					<li>
+			<span class="type">string</span>
+			<b>$valDefaut</b> 
+			- 
+			valeur par défaut</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionlireDonneePost"></a>
+	<h3>lireDonneePost</h3>
+	<div class="indent">
+		<code>string lireDonneePost(
+string $nomDonnee, [string $valDefaut = &amp;quot;&amp;quot;])</code>
+		<p class="linenumber">[line 146]</p>
+		<p align="center"><strong>Fournit la valeur d'une donnée transmise par la méthode post   (corps de la requête HTTP).
+</strong></p>
+<p>Retourne la valeur de la donnée portant le nom $nomDonnee reçue dans le corps de la requête http,  $valDefaut si aucune donnée de nom $nomDonnee dans le corps de requête</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - valeur de la donnée</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">string</span>
+			<b>$nomDonnee</b> 
+			- 
+			nom de la donnée</li>
+					<li>
+			<span class="type">string</span>
+			<b>$valDefaut</b> 
+			- 
+			valeur par défaut</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionlireDonneeUrl"></a>
+	<h3>lireDonneeUrl</h3>
+	<div class="indent">
+		<code>string lireDonneeUrl(
+string $nomDonnee, [string $valDefaut = &amp;quot;&amp;quot;])</code>
+		<p class="linenumber">[line 126]</p>
+		<p align="center"><strong>Fournit la valeur d'une donnée transmise par la méthode get (url).
+</strong></p>
+<p>Retourne la valeur de la donnée portant le nom $nomDonnee reçue dans l'url,  $valDefaut si aucune donnée de nom $nomDonnee dans l'url</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - valeur de la donnée</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">string</span>
+			<b>$nomDonnee</b> 
+			- 
+			nom de la donnée</li>
+					<li>
+			<span class="type">string</span>
+			<b>$valDefaut</b> 
+			- 
+			valeur par défaut</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionnbErreurs"></a>
+	<h3>nbErreurs</h3>
+	<div class="indent">
+		<code>int nbErreurs(
+array $tabErr)</code>
+		<p class="linenumber">[line 202]</p>
+		<p align="center"><strong>Retourne le nombre de messages d'erreurs enregistrés.
+</strong></p>
+<p>Retourne le nombre de messages d'erreurs enregistrés dans le tableau $tabErr.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - nombre de messages d'erreurs</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">array</span>
+			<b>$tabErr</b> 
+			- 
+			tableau des messages d'erreurs</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirLibelleMois"></a>
+	<h3>obtenirLibelleMois</h3>
+	<div class="indent">
+		<code>string obtenirLibelleMois(
+int $unNoMois)</code>
+		<p class="linenumber">[line 16]</p>
+		<p align="center"><strong>Fournit le libellé en français correspondant à un numéro de mois.
+</strong></p>
+<p>Fournit le libellé français du mois de numéro $unNoMois.  Retourne une chaîne vide si le numéro n'est pas compris dans l'intervalle [1,12].</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - identifiant de connexion</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">int</span>
+			<b>$unNoMois</b> 
+			- 
+			numéro de mois</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functiontoStringErreurs"></a>
+	<h3>toStringErreurs</h3>
+	<div class="indent">
+		<code>string toStringErreurs(
+array $tabErr)</code>
+		<p class="linenumber">[line 214]</p>
+		<p align="center"><strong>Fournit les messages d'erreurs sous forme d'une liste à puces HTML.
+</strong></p>
+<p>Retourne le source HTML, division contenant une liste à puces, d'après les  messages d'erreurs contenus dans le tableau des messages d'erreurs $tabErr.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - source html</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">array</span>
+			<b>$tabErr</b> 
+			- 
+			tableau des messages d'erreurs</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionverifierEntiersPositifs"></a>
+	<h3>verifierEntiersPositifs</h3>
+	<div class="indent">
+		<code>booléen verifierEntiersPositifs(
+array $lesValeurs)</code>
+		<p class="linenumber">[line 107]</p>
+		<p align="center"><strong>Vérifie que chaque valeur est bien renseignée et numérique entière positive.
+</strong></p>
+<p>Renvoie la valeur booléenne true si toutes les valeurs sont bien renseignées et  numériques entières positives. False si l'une d'elles ne l'est pas.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - succès ou échec</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">array</span>
+			<b>$lesValeurs</b> 
+			- 
+			tableau des valeurs</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionverifierLigneFraisHF"></a>
+	<h3>verifierLigneFraisHF</h3>
+	<div class="indent">
+		<code>void verifierLigneFraisHF(
+array $date, array $libelle, array $montant,  &$tabErrs, array $tabErrs)</code>
+		<p class="linenumber">[line 251]</p>
+		<p align="center"><strong>Vérifie la validité des données d'une ligne de frais hors forfait.
+</strong></p>
+<p>Renseigne le tableau des messages d'erreurs d'après les erreurs rencontrées  sur chaque donnée d'une ligne de frais hors forfait : vérifie que chaque  donnée est bien renseignée, le montant est numérique positif, la date valide  et dans l'année écoulée.</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">array</span>
+			<b>$date</b> 
+			- 
+			date d'engagement de la ligne de frais HF</li>
+					<li>
+			<span class="type">array</span>
+			<b>$libelle</b> 
+			- 
+			libellé de la ligne de frais HF</li>
+					<li>
+			<span class="type">array</span>
+			<b>$montant</b> 
+			- 
+			montant de la ligne de frais HF</li>
+					<li>
+			<span class="type">array</span>
+			<b>$tabErrs</b> 
+			- 
+			tableau des messages d'erreurs passé par référence</li>
+					<li>
+			<span class="type"></span>
+			<b>&$tabErrs</b> 
+			- 
+			</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+</div>
+	<div id="credit">
+		<hr>
+		Documentation generated on Tue, 29 Jan 2013 07:38:00 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+	</div>
+</div>
+</body>
+</html>

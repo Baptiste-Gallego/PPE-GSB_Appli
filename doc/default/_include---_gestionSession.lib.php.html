@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>Docs for page _gestionSession.lib.php</title>
+	<link rel="stylesheet" type="text/css" id="layout" href="../media/layout.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../media/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../media/print.css" media="print">
+</head>
+
+<body>
+<div id="header">
+	<div id="navLinks">
+        
+                                    
+                            	        [ <a href="../classtrees_default.html">Class Tree: default</a> ]
+            [ <a href="../elementindex_default.html">Index: default</a> ]
+        		[ <a href="../elementindex.html">All elements</a> ]		
+	</div>
+	<div id="packagePosition">
+		<div id="packageTitle2">default</div>
+		<div id="packageTitle">default</div>
+		<div id="elementPath"> &middot; </div>
+	</div>
+</div>
+
+<div id="nav" class="small">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	<div id="packages">
+		Packages:
+					<p><a href="../li_default.html">default</a></p>
+			</div>
+
+				<div id="index">
+			<div id="files">
+								Files:<br>
+								<a href="../default/_cAccueil.php.html">		cAccueil.php
+		</a><br>
+			<a href="../default/_cConsultFichesFrais.php.html">		cConsultFichesFrais.php
+		</a><br>
+			<a href="../default/_cSaisieFicheFrais.php.html">		cSaisieFicheFrais.php
+		</a><br>
+			<a href="../default/_cSeConnecter.php.html">		cSeConnecter.php
+		</a><br>
+			<a href="../default/_cSeDeconnecter.php.html">		cSeDeconnecter.php
+		</a><br>
+			<a href="../default/_include---_bdGestionDonnees.lib.php.html">		_bdGestionDonnees.lib.php
+		</a><br>
+			<a href="../default/_include---_fin.inc.php.html">		_fin.inc.php
+		</a><br>
+			<a href="../default/_include---_gestionSession.lib.php.html">		_gestionSession.lib.php
+		</a><br>
+			<a href="../default/_include---_init.inc.php.html">		_init.inc.php
+		</a><br>
+			<a href="../default/_include---_sommaire.inc.php.html">		_sommaire.inc.php
+		</a><br>
+			<a href="../default/_include---_utilitairesEtGestionErreurs.lib.php.html">		_utilitairesEtGestionErreurs.lib.php
+		</a><br>
+				</div>
+			<div id="interfaces">
+							</div>
+			<div id="classes">
+							</div>
+		</div>
+	</div>
+
+<div id="body">
+	    		<h1>Procedural File: _gestionSession.lib.php</h1>
+	<p style="margin: 0px;">Source Location: /include/_gestionSession.lib.php</p>
+	
+<br>
+<br>
+
+<div class="contents">
+<h2>Classes:</h2>
+<dl>
+</dl>
+</div>
+
+<h2>Page Details:</h2>
+<p align="center"><strong>Regroupe les fonctions de gestion d'une session utilisateur.
+</strong></p>
+<h4>Tags:</h4>
+<ul>
+	<li><b>todo</b> - RAS</li>
+</ul>
+<hr>
+<hr>
+<div id="global">
+</div><hr>
+<div id="define">
+</div><hr>
+<div id="function">
+	<a name="functionaffecterInfosConnecte"></a>
+	<h3>affecterInfosConnecte</h3>
+	<div class="indent">
+		<code>void affecterInfosConnecte(
+string $id, string $login)</code>
+		<p class="linenumber">[line 39]</p>
+		<p align="center"><strong>Conserve en variables session les informations du visiteur connecté
+</strong></p>
+<p>Conserve en variables session l'id $id et le login $login du visiteur connecté</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">string</span>
+			<b>$id</b> 
+			- 
+			id du visiteur</li>
+					<li>
+			<span class="type">string</span>
+			<b>$login</b> 
+			- 
+			login du visiteur</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functiondeconnecterVisiteur"></a>
+	<h3>deconnecterVisiteur</h3>
+	<div class="indent">
+		<code>void deconnecterVisiteur(
+)</code>
+		<p class="linenumber">[line 49]</p>
+		<p align="center"><strong>Déconnecte le visiteur qui s'est identifié sur le site.
+</strong></p>
+		
+		<h4>Parameters</h4>
+		<ul>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionestVisiteurConnecte"></a>
+	<h3>estVisiteurConnecte</h3>
+	<div class="indent">
+		<code>boolean estVisiteurConnecte(
+)</code>
+		<p class="linenumber">[line 60]</p>
+		<p align="center"><strong>Vérifie si un visiteur s'est connecté sur le site.
+</strong></p>
+<p>Retourne true si un visiteur s'est identifié sur le site, false sinon.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - échec ou succès</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functioninitSession"></a>
+	<h3>initSession</h3>
+	<div class="indent">
+		<code>void initSession(
+)</code>
+		<p class="linenumber">[line 13]</p>
+		<p align="center"><strong>Démarre ou poursuit une session.
+</strong></p>
+		
+		<h4>Parameters</h4>
+		<ul>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirIdUserConnecte"></a>
+	<h3>obtenirIdUserConnecte</h3>
+	<div class="indent">
+		<code>string obtenirIdUserConnecte(
+)</code>
+		<p class="linenumber">[line 23]</p>
+		<p align="center"><strong>Fournit l'id du visiteur connecté.
+</strong></p>
+<p>Retourne l'id du visiteur connecté, une chaîne vide si pas de visiteur connecté.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - id du visiteur connecté</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+</div>
+	<div id="credit">
+		<hr>
+		Documentation generated on Tue, 29 Jan 2013 07:38:00 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+	</div>
+</div>
+</body>
+</html>
