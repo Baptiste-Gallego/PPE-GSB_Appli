@@ -60,5 +60,23 @@ function deconnecterVisiteur() {
 function estVisiteurConnecte() {
     // actuellement il n'y a que les visiteurs qui se connectent
     return isset($_SESSION["loginUser"]);
+          
+      
+}
+
+/** 
+ * Vérifie si un compatable s'est connecté sur le site.                     
+ *
+ * Retourne true si un compatable s'est identifié sur le site, false sinon. 
+ * @return boolean échec ou succès
+ */
+function estUnCompatable($type){
+       
+        
+        if($type == 1){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
 }
 ?>

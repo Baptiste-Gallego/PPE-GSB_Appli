@@ -14,16 +14,33 @@
           $idUser = obtenirIdUserConnecte() ;
           $lgUser = obtenirDetailVisiteur($idConnexion, $idUser);
           $nom = $lgUser['nom'];
-          $prenom = $lgUser['prenom'];            
+          $prenom = $lgUser['prenom'];
+          $type = $lgUser['type'];
+          
     ?>
         <h2>
     <?php  
-            echo $nom . " " . $prenom ;
+            echo $nom . " " . $prenom;
+   
     ?>
         </h2>
-        <h3>Visiteur médical</h3>        
-    <?php
-       }
+         <h3>
+   <?php
+    
+    if(estUnCompatable($type) ){
+        echo "Comptable";
+     
+    }else{
+   
+        echo "Visiteur médical";
+    }
+   
+                
+   ?>
+        </h3>
+   <?php
+      
+    }
     ?>  
       </div>  
 <?php      
@@ -42,13 +59,22 @@
            <li class="smenu">
               <a href="cConsultFichesFrais.php" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
            </li>
-         </ul>
+           <?php
+         if (estUnCompatable($type)){
+            ?>
+           <li class="smenu">
+              <a href="cValideFrais.php" title="Valider les fiches de frais">Valides les fiches de frais</a>
+           </li>
+           <?php
+            }
+          ?>
+           </ul>
         <?php
           // affichage des éventuelles erreurs déjà détectées
           if ( nbErreurs($tabErreurs) > 0 ) {
               echo toStringErreurs($tabErreurs) ;
           }
   }
-        ?>
+  ?>
     </div>
     

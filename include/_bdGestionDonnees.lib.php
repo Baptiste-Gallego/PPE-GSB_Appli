@@ -75,7 +75,7 @@ function filtrerChainePourBD($str) {
  */
 function obtenirDetailVisiteur($idCnx, $unId) {
     $id = filtrerChainePourBD($unId);
-    $requete = "select id, nom, prenom from visiteur where id='" . $unId . "'";
+    $requete = "select id, nom, prenom, type from visiteur where id='" . $unId . "'";
     $idJeuRes = mysql_query($requete, $idCnx);  
     $ligne = false;     
     if ( $idJeuRes ) {
@@ -211,6 +211,31 @@ function obtenirReqMoisFicheFrais($unIdVisiteur) {
             . $unIdVisiteur . "' order by fichefrais.mois desc ";
     return $req ;
 }  
+
+/**
+ * Retourne le texte de la requ�te select concernant les mois pour lesquels un 
+ * visiteur a une fiche de frais. 
+ * 
+ * La requ�te de s�lection fournie permettra d'obtenir les mois (AAAAMM) pour 
+ * lesquels le visiteur $unIdVisiteur a une fiche de frais. 
+ * @return string texte de la requ�te select
+ */ 
+function obtenirReqMois() {
+    $req = "Select distinct fichefrais.mois as mois from  fichefrais order by fichefrais.mois desc ";
+    return $req ;
+}  
+/**
+ * affiche la liste des visiteurs
+ * @param type $idConnexion
+ */
+function obtenirListeVisiteur($idConnexion){
+    $req = "SELECT id, nom FROM visiteur";
+    $result = mysql_query($req, $idConnexion);
+    while ($nom = mysql_fetch_row($result)) {
+         echo '<option value="'.$nom[0].'">'.$nom[1].'</option>';
+    }
+    mysql_free_result($result);
+}
                   
 /**
  * Retourne le texte de la requ�te select concernant les �l�ments forfaitis�s 
@@ -249,6 +274,45 @@ function obtenirReqEltsHorsForfaitFicheFrais($unMois, $unIdVisiteur) {
               . "' and mois='" . $unMois . "'";
     return $requete;
 }
+
+/**
+ * Retourne le texte de la requ�te select concernant la liste des lgne de Frais Forfais en 
+ * fonction du mois et de l'idVisiteur
+ * @param type $unMois
+ * @param type $unIdVisiteur
+ * @return string
+ */
+function obtenirLigneFraisForfait($unMois, $unIdVisiteur){
+
+     $requete = "SELECT * FROM `lignefraisforfait` WHERE mois='".$unMois."'  and idVisiteur='".$unIdVisiteur."'";
+    return $requete;
+}
+/**
+ * Retourne le texte de la requ�te count concernant la liste des lgne de Frais Forfais en 
+ * fonction du mois et de l'idVisiteur
+ * @param type $unMois
+ * @param type $unIdVisiteur
+ * @return string
+ */
+function countFraisForfait($unMois, $unIdVisiteur){
+
+     $requete = "SELECT Count(*) FROM `lignefraisforfait` WHERE mois='".$unMois."'  and idVisiteur='".$unIdVisiteur."'";
+    return $requete;
+}
+
+
+/**
+ * Retourne le texte de la requ�te select concernant la liste des Frais hors Forfais en 
+ * fonction du mois et de l'idVisiteur
+ * @param type $unMois
+ * @param type $unIdVisiteur
+ * @return string
+ */
+function obtenirLigneFraisHorsForfait($unMois, $unIdVisiteur){
+    $requete = "SELECT * FROM `lignefraishorsforfait` WHERE mois='".$unMois."'  and idVisiteur='".$unIdVisiteur."'";
+    return $requete;
+}
+
 
 /**
  * Supprime une ligne hors forfait.
@@ -311,7 +375,8 @@ function modifierEltsForfait($idCnx, $unMois, $unIdVisiteur, $desEltsForfait) {
 
 /**
  * Contr�le les informations de connexionn d'un utilisateur.
- * V�rifie si les informations de connexion $unLogin, $unMdp sont ou non valides.
+ * V�rifie si les informations de connexion $unLogin, $unMdp sont ou non valides
+ * et dans quel table visiteur ou compable.
  * Retourne les informations de l'utilisateur sous forme de tableau associatif 
  * dont les cl�s sont les noms des colonnes (id, nom, prenom, login, mdp)
  * si login et mot de passe existent, le bool�en false sinon. 
@@ -321,22 +386,28 @@ function modifierEltsForfait($idCnx, $unMois, $unIdVisiteur, $desEltsForfait) {
  * @return array tableau associatif ou bool�en false 
  */
 function verifierInfosConnexion($idCnx, $unLogin, $unMdp) {
+    
     $unLogin = filtrerChainePourBD($unLogin);
     $unMdp = filtrerChainePourBD($unMdp);
-    // le mot de passe est crypt� dans la base avec la fonction de hachage md5
-    $req = "select id, nom, prenom, login, mdp from Visiteur where login='".$unLogin."' and mdp='" . $unMdp . "'";
-    $idJeuRes = mysql_query($req, $idCnx);
-    $ligne = false;
-    if ( $idJeuRes ) {
-        $ligne = mysql_fetch_assoc($idJeuRes);
-        mysql_free_result($idJeuRes);
-    }
-    return $ligne;
+    
+    
+    
+        // le mot de passe est crypt� dans la base avec la fonction de hachage md5
+        $req = "select id, nom, prenom, login, mdp, type from Visiteur where login='".$unLogin."' and mdp='" . $unMdp . "'";
+        $idJeuRes = mysql_query($req, $idCnx);
+        $ligne = false;
+        if(1 == mysql_num_rows($idJeuRes)){
+            if ( $idJeuRes ) {
+                $ligne = mysql_fetch_assoc($idJeuRes);
+                mysql_free_result($idJeuRes);
+            }
+        }
+        
+        return $ligne;
 }
 
 /**
- * Modifie l'�tat et la date de modification d'une fiche de frais
- 
+ * Modifie l'�tat et la date de modification d'une fiche de frais 
  * Met � jour l'�tat de la fiche de frais du visiteur $unIdVisiteur pour
  * le mois $unMois � la nouvelle valeur $unEtat et passe la date de modif � 
  * la date d'aujourd'hui
@@ -350,5 +421,37 @@ function modifierEtatFicheFrais($idCnx, $unMois, $unIdVisiteur, $unEtat) {
                "', dateModif = now() where idVisiteur ='" .
                $unIdVisiteur . "' and mois = '". $unMois . "'";
     mysql_query($requete, $idCnx);
-}             
+}
+
+/**
+ * Modifie la quantité de la ligne de frais Forfait
+ * Met à jour l'etat de la fiche de frais du visiteur $unIdVisiteur pour
+ * le mois $unMois � la nouvelle valeur $unEtat et passe la date de modif � 
+ * la date d'aujourd'hui
+ * @param resource $idCnx identifiant de connexion
+ * @param type $quantite
+ * @param type $idVisiteur
+ * @param type $mois
+ * @param type $idFraisForfait
+ */
+function modifierLigneFraisForfait($idCnx, $quantite, $idVisiteur, $unMois, $idFraisForfait){
+    $req = "UPDATE lignefraisforfait SET quantite=".$quantite." 
+        WHERE  idVisiteur='".$idVisiteur."' AND mois='".$unMois."' AND idFraisForfait='".$idFraisForfait."'";
+    mysql_query($req, $idCnx);
+}
+/**
+ * Modifie la quantité et le montant de la ligne de hors frais Forfait
+ *
+ * @param resource $idCnx identifiant de connexion
+ * @param type $id
+ * @param type $libelle
+ * @param type $montant
+ */
+function modifierLigneFraisHorsForfait($idCnx, $id, $libelle, $montant){
+    $req = "UPDATE lignefraishorsforfait SET libelle='".$libelle."' , montant='".$montant."'
+        WHERE  id='".$id."'";
+    mysql_query($req, $idCnx);
+}
+
+
 ?>
