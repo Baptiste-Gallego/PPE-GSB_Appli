@@ -53,19 +53,26 @@
            <li class="smenu">
               <a href="cSeDeconnecter.php" title="Se déconnecter">Se déconnecter</a>
            </li>
-           <li class="smenu">
-              <a href="cSaisieFicheFrais.php" title="Saisie fiche de frais du mois courant">Saisie fiche de frais</a>
-           </li>
-           <li class="smenu">
-              <a href="cConsultFichesFrais.php" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
-           </li>
+           
            <?php
          if (estUnCompatable($type)){
             ?>
            <li class="smenu">
               <a href="cValideFrais.php" title="Valider les fiches de frais">Valides les fiches de frais</a>
            </li>
+            <li class="smenu">
+              <a href="cSuivreFicheFrais.php" title="Suivre le paiement fiche de frais">Suivre le paiement fiche de frais</a>
+           </li>
            <?php
+            }else{
+                ?>
+               <li class="smenu">
+              <a href="cSaisieFicheFrais.php" title="Saisie fiche de frais du mois courant">Saisie fiche de frais</a>
+                </li>
+                <li class="smenu">
+                   <a href="cConsultFichesFrais.php" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
+                </li> 
+                <?php
             }
           ?>
            </ul>

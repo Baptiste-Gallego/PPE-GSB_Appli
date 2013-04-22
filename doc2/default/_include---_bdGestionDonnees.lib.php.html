@@ -1,0 +1,798 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>Docs for page _bdGestionDonnees.lib.php</title>
+	<link rel="stylesheet" type="text/css" id="layout" href="../media/layout.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../media/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../media/print.css" media="print">
+</head>
+
+<body>
+<div id="header">
+	<div id="navLinks">
+        
+                                    
+                            	        [ <a href="../classtrees_default.html">Class Tree: default</a> ]
+            [ <a href="../elementindex_default.html">Index: default</a> ]
+        		[ <a href="../elementindex.html">All elements</a> ]		
+	</div>
+	<div id="packagePosition">
+		<div id="packageTitle2">default</div>
+		<div id="packageTitle">default</div>
+		<div id="elementPath"> &middot; </div>
+	</div>
+</div>
+
+<div id="nav" class="small">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	<div id="packages">
+		Packages:
+					<p><a href="../li_default.html">default</a></p>
+			</div>
+
+				<div id="index">
+			<div id="files">
+								Files:<br>
+								<a href="../default/_cAccueil.php.html">		cAccueil.php
+		</a><br>
+			<a href="../default/_cConsultFichesFrais.php.html">		cConsultFichesFrais.php
+		</a><br>
+			<a href="../default/_cSaisieFicheFrais.php.html">		cSaisieFicheFrais.php
+		</a><br>
+			<a href="../default/_cSeConnecter.php.html">		cSeConnecter.php
+		</a><br>
+			<a href="../default/_cSeDeconnecter.php.html">		cSeDeconnecter.php
+		</a><br>
+			<a href="../default/_cSuivreFicheFrais.php.html">		cSuivreFicheFrais.php
+		</a><br>
+			<a href="../default/_cValideFrais.php.html">		cValideFrais.php
+		</a><br>
+			<a href="../default/_include---_bdGestionDonnees.lib.php.html">		_bdGestionDonnees.lib.php
+		</a><br>
+			<a href="../default/_include---_fin.inc.php.html">		_fin.inc.php
+		</a><br>
+			<a href="../default/_include---_gestionSession.lib.php.html">		_gestionSession.lib.php
+		</a><br>
+			<a href="../default/_include---_init.inc.php.html">		_init.inc.php
+		</a><br>
+			<a href="../default/_include---_sommaire.inc.php.html">		_sommaire.inc.php
+		</a><br>
+			<a href="../default/_include---_utilitairesEtGestionErreurs.lib.php.html">		_utilitairesEtGestionErreurs.lib.php
+		</a><br>
+				</div>
+			<div id="interfaces">
+							</div>
+			<div id="classes">
+							</div>
+		</div>
+	</div>
+
+<div id="body">
+	    		<h1>Procedural File: _bdGestionDonnees.lib.php</h1>
+	<p style="margin: 0px;">Source Location: /include/_bdGestionDonnees.lib.php</p>
+	
+<br>
+<br>
+
+<div class="contents">
+<h2>Classes:</h2>
+<dl>
+</dl>
+</div>
+
+<h2>Page Details:</h2>
+<p align="center"><strong>Regroupe les fonctions d'acc�s aux donn�es.
+</strong></p>
+<h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Arthur Martin</li>
+	<li><b>todo</b> - Fonctions retournant plusieurs lignes sont � r��crire.</li>
+</ul>
+<hr>
+<hr>
+<div id="global">
+</div><hr>
+<div id="define">
+</div><hr>
+<div id="function">
+	<a name="functionactiverBD"></a>
+	<h3>activerBD</h3>
+	<div class="indent">
+		<code>boolean activerBD(
+resource $idCnx)</code>
+		<p class="linenumber">[line 31]</p>
+		<p align="center"><strong>S�lectionne (rend active) la base de donn�es.
+</strong></p>
+<p>S�lectionne (rend active) la BD pr�d�finie gsb_frais sur la connexion  identifi�e par $idCnx. Retourne true si succ�s, false sinon.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - succ�s ou �chec de s�lection BD</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionajouterFicheFrais"></a>
+	<h3>ajouterFicheFrais</h3>
+	<div class="indent">
+		<code>void ajouterFicheFrais(
+resource $idCnx, string $unMois, string $unIdVisiteur)</code>
+		<p class="linenumber">[line 167]</p>
+		<p align="center"><strong>Ajoute une nouvelle fiche de frais et les �l�ments forfaitis�s associ�s,  Ajoute la fiche de frais du mois de $unMois (MMAAAA) du visiteur  $idVisiteur, avec les �l�ments forfaitis�s associ�s dont la quantit� initiale  est affect�e � 0. Cl�t �ventuellement la fiche de frais pr�c�dente du visiteur.
+</strong></p>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unMois</b> 
+			- 
+			mois demand� (MMAAAA)</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			id visiteur</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionajouterLigneHF"></a>
+	<h3>ajouterLigneHF</h3>
+	<div class="indent">
+		<code>void ajouterLigneHF(
+resource $idCnx, string $unMois, string $unIdVisiteur, string $uneDateHF, string $unLibelleHF, double $unMontantHF)</code>
+		<p class="linenumber">[line 352]</p>
+		<p align="center"><strong>Ajoute une nouvelle ligne hors forfait.
+</strong></p>
+<p>Ins�re dans la BD la ligne hors forfait de libell� $unLibelleHF du montant  $unMontantHF ayant eu lieu � la date $uneDateHF pour la fiche de frais du mois  $unMois du visiteur d'id $unIdVisiteur</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unMois</b> 
+			- 
+			mois demand� (AAMMMM)</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			id du visiteur</li>
+					<li>
+			<span class="type">string</span>
+			<b>$uneDateHF</b> 
+			- 
+			date du frais hors forfait</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unLibelleHF</b> 
+			- 
+			libell� du frais hors forfait</li>
+					<li>
+			<span class="type">double</span>
+			<b>$unMontantHF</b> 
+			- 
+			montant du frais hors forfait</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionconnecterServeurBD"></a>
+	<h3>connecterServeurBD</h3>
+	<div class="indent">
+		<code>resource connecterServeurBD(
+)</code>
+		<p class="linenumber">[line 17]</p>
+		<p align="center"><strong>Se connecte au serveur de donn�es MySql.
+</strong></p>
+<p>Se connecte au serveur de donn�es MySql � partir de valeurs  pr�d�finies de connexion (h�te, compte utilisateur et mot de passe).  Retourne l'identifiant de connexion si succ�s obtenu, le bool�en false  si probl�me de connexion.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - identifiant de connexion</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functioncountFraisForfait"></a>
+	<h3>countFraisForfait</h3>
+	<div class="indent">
+		<code>string countFraisForfait(
+type $unMois, type $unIdVisiteur)</code>
+		<p class="linenumber">[line 307]</p>
+		<p align="center"><strong>Retourne le texte de la requ�te count concernant la liste des lgne de Frais Forfais en
+</strong></p>
+<p>fonction du mois et de l'idVisiteur</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">type</span>
+			<b>$unMois</b> 
+			- 
+			</li>
+					<li>
+			<span class="type">type</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functiondeconnecterServeurBD"></a>
+	<h3>deconnecterServeurBD</h3>
+	<div class="indent">
+		<code>void deconnecterServeurBD(
+resource $idCnx)</code>
+		<p class="linenumber">[line 47]</p>
+		<p align="center"><strong>Ferme la connexion au serveur de donn�es.
+</strong></p>
+<p>Ferme la connexion au serveur de donn�es identifi�e par l'identifiant de  connexion $idCnx.</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionexisteFicheFrais"></a>
+	<h3>existeFicheFrais</h3>
+	<div class="indent">
+		<code>bool�en existeFicheFrais(
+resource $idCnx, string $unMois, string $unIdVisiteur)</code>
+		<p class="linenumber">[line 122]</p>
+		<p align="center"><strong>V�rifie si une fiche de frais existe ou non.
+</strong></p>
+<p>Retourne true si la fiche de frais du mois de $unMois (MMAAAA) du visiteur  $idVisiteur existe, false sinon.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - existence ou non de la fiche de frais</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unMois</b> 
+			- 
+			mois demand� (MMAAAA)</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			id visiteur</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionfiltrerChainePourBD"></a>
+	<h3>filtrerChainePourBD</h3>
+	<div class="indent">
+		<code>string filtrerChainePourBD(
+string $str)</code>
+		<p class="linenumber">[line 58]</p>
+		<p align="center"><strong>Echappe les caract�res sp�ciaux d'une cha�ne.
+</strong></p>
+<p>Envoie la cha�ne $str �chapp�e, c�d avec les caract�res consid�r�s sp�ciaux  par MySql (tq la quote simple) pr�c�d�s d'un \, ce qui annule leur effet sp�cial</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - cha�ne �chapp�e</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">string</span>
+			<b>$str</b> 
+			- 
+			cha�ne � �chapper</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionmodifierEltsForfait"></a>
+	<h3>modifierEltsForfait</h3>
+	<div class="indent">
+		<code>void modifierEltsForfait(
+resource $idCnx, string $unMois, string $unIdVisiteur, array $desEltsForfait)</code>
+		<p class="linenumber">[line 375]</p>
+		<p align="center"><strong>Modifie les quantit�s des �l�ments forfaitis�s d'une fiche de frais.
+</strong></p>
+<p>Met � jour les �l�ments forfaitis�s contenus  dans $desEltsForfaits pour le visiteur $unIdVisiteur et  le mois $unMois dans la table LigneFraisForfait, apr�s avoir filtr�  (annul� l'effet de certains caract�res consid�r�s comme sp�ciaux par   MySql) chaque donn�e</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unMois</b> 
+			- 
+			mois demand� (MMAAAA)</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			id visiteur</li>
+					<li>
+			<span class="type">array</span>
+			<b>$desEltsForfait</b> 
+			- 
+			tableau des quantit�s des �l�ments hors forfait  avec pour cl�s les identifiants des frais forfaitis�s</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionmodifierEtatFicheFrais"></a>
+	<h3>modifierEtatFicheFrais</h3>
+	<div class="indent">
+		<code>void modifierEtatFicheFrais(
+resource $idCnx, string $unMois, string $unIdVisiteur,  $unEtat)</code>
+		<p class="linenumber">[line 429]</p>
+		<p align="center"><strong>Modifie l'�tat et la date de modification d'une fiche de frais
+</strong></p>
+<p>Met � jour l'�tat de la fiche de frais du visiteur $unIdVisiteur pour  le mois $unMois � la nouvelle valeur $unEtat et passe la date de modif �  la date d'aujourd'hui</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unMois</b> 
+			- 
+			mois sous la forme aaaamm</li>
+					<li>
+			<span class="type"></span>
+			<b>$unEtat</b> 
+			- 
+			</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionmodifierLigneFraisForfait"></a>
+	<h3>modifierLigneFraisForfait</h3>
+	<div class="indent">
+		<code>void modifierLigneFraisForfait(
+resource $idCnx, type $quantite, type $idVisiteur,  $unMois, type $idFraisForfait, type $mois)</code>
+		<p class="linenumber">[line 447]</p>
+		<p align="center"><strong>Modifie la quantité de la ligne de frais Forfait
+</strong></p>
+<p>Met à jour l'etat de la fiche de frais du visiteur $unIdVisiteur pour  le mois $unMois � la nouvelle valeur $unEtat et passe la date de modif �  la date d'aujourd'hui</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">type</span>
+			<b>$quantite</b> 
+			- 
+			</li>
+					<li>
+			<span class="type">type</span>
+			<b>$idVisiteur</b> 
+			- 
+			</li>
+					<li>
+			<span class="type">type</span>
+			<b>$mois</b> 
+			- 
+			</li>
+					<li>
+			<span class="type">type</span>
+			<b>$idFraisForfait</b> 
+			- 
+			</li>
+					<li>
+			<span class="type"></span>
+			<b>$unMois</b> 
+			- 
+			</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionmodifierLigneFraisHorsForfait"></a>
+	<h3>modifierLigneFraisHorsForfait</h3>
+	<div class="indent">
+		<code>void modifierLigneFraisHorsForfait(
+resource $idCnx, type $id, type $libelle, type $montant)</code>
+		<p class="linenumber">[line 460]</p>
+		<p align="center"><strong>Modifie la quantité et le montant de la ligne de hors frais Forfait
+</strong></p>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">type</span>
+			<b>$id</b> 
+			- 
+			</li>
+					<li>
+			<span class="type">type</span>
+			<b>$libelle</b> 
+			- 
+			</li>
+					<li>
+			<span class="type">type</span>
+			<b>$montant</b> 
+			- 
+			</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirDernierMoisSaisi"></a>
+	<h3>obtenirDernierMoisSaisi</h3>
+	<div class="indent">
+		<code>string obtenirDernierMoisSaisi(
+resource $idCnx, string $unIdVisiteur)</code>
+		<p class="linenumber">[line 144]</p>
+		<p align="center"><strong>Fournit le mois de la derni�re fiche de frais d'un visiteur.
+</strong></p>
+<p>Retourne le mois de la derni�re fiche de frais du visiteur d'id $unIdVisiteur.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - dernier mois sous la forme AAAAMM</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			id visiteur</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirDetailFicheFrais"></a>
+	<h3>obtenirDetailFicheFrais</h3>
+	<div class="indent">
+		<code>array obtenirDetailFicheFrais(
+resource $idCnx, string $unMois, string $unIdVisiteur)</code>
+		<p class="linenumber">[line 98]</p>
+		<p align="center"><strong>Fournit les informations d'une fiche de frais.
+</strong></p>
+<p>Retourne les informations de la fiche de frais du mois de $unMois (MMAAAA)  sous la forme d'un tableau associatif dont les cl�s sont les noms des colonnes  (nbJustitificatifs, idEtat, libelleEtat, dateModif, montantValide).</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - tableau associatif de la fiche de frais</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unMois</b> 
+			- 
+			mois demand� (MMAAAA)</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			id visiteur</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirDetailVisiteur"></a>
+	<h3>obtenirDetailVisiteur</h3>
+	<div class="indent">
+		<code>array obtenirDetailVisiteur(
+resource $idCnx, string $unId)</code>
+		<p class="linenumber">[line 76]</p>
+		<p align="center"><strong>Fournit les informations sur un visiteur demand�.
+</strong></p>
+<p>Retourne les informations du visiteur d'id $unId sous la forme d'un tableau  associatif dont les cl�s sont les noms des colonnes(id, nom, prenom).</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - tableau associatif du visiteur</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unId</b> 
+			- 
+			id de l'utilisateur</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirLigneFraisForfait"></a>
+	<h3>obtenirLigneFraisForfait</h3>
+	<div class="indent">
+		<code>string obtenirLigneFraisForfait(
+type $unMois, type $unIdVisiteur)</code>
+		<p class="linenumber">[line 295]</p>
+		<p align="center"><strong>Retourne le texte de la requ�te select concernant la liste des lgne de Frais Forfais en
+</strong></p>
+<p>fonction du mois et de l'idVisiteur</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">type</span>
+			<b>$unMois</b> 
+			- 
+			</li>
+					<li>
+			<span class="type">type</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirLigneFraisHorsForfait"></a>
+	<h3>obtenirLigneFraisHorsForfait</h3>
+	<div class="indent">
+		<code>string obtenirLigneFraisHorsForfait(
+type $unMois, type $unIdVisiteur)</code>
+		<p class="linenumber">[line 321]</p>
+		<p align="center"><strong>Retourne le texte de la requ�te select concernant la liste des Frais hors Forfais en
+</strong></p>
+<p>fonction du mois et de l'idVisiteur</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">type</span>
+			<b>$unMois</b> 
+			- 
+			</li>
+					<li>
+			<span class="type">type</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirListeFicheFraisValide"></a>
+	<h3>obtenirListeFicheFraisValide</h3>
+	<div class="indent">
+		<code>void obtenirListeFicheFraisValide(
+ $idConnexion)</code>
+		<p class="linenumber">[line 240]</p>
+				
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type"></span>
+			<b>$idConnexion</b> 
+			- 
+			</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirListeVisiteur"></a>
+	<h3>obtenirListeVisiteur</h3>
+	<div class="indent">
+		<code>void obtenirListeVisiteur(
+type $idConnexion)</code>
+		<p class="linenumber">[line 231]</p>
+		<p align="center"><strong>affiche la liste des visiteurs
+</strong></p>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">type</span>
+			<b>$idConnexion</b> 
+			- 
+			</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirReqEltsForfaitFicheFrais"></a>
+	<h3>obtenirReqEltsForfaitFicheFrais</h3>
+	<div class="indent">
+		<code>string obtenirReqEltsForfaitFicheFrais(
+string $unMois, string $unIdVisiteur)</code>
+		<p class="linenumber">[line 261]</p>
+		<p align="center"><strong>Retourne le texte de la requ�te select concernant les �l�ments forfaitis�s  d'un visiteur pour un mois donn�s.
+</strong></p>
+<p>La requ�te de s�lection fournie permettra d'obtenir l'id, le libell� et la  quantit� des �l�ments forfaitis�s de la fiche de frais du visiteur  d'id $idVisiteur pour le mois $mois</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - texte de la requ�te select</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">string</span>
+			<b>$unMois</b> 
+			- 
+			mois demand� (MMAAAA)</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			id visiteur</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirReqEltsHorsForfaitFicheFrais"></a>
+	<h3>obtenirReqEltsHorsForfaitFicheFrais</h3>
+	<div class="indent">
+		<code>string obtenirReqEltsHorsForfaitFicheFrais(
+string $unMois, string $unIdVisiteur)</code>
+		<p class="linenumber">[line 280]</p>
+		<p align="center"><strong>Retourne le texte de la requ�te select concernant les �l�ments hors forfait  d'un visiteur pour un mois donn�s.
+</strong></p>
+<p>La requ�te de s�lection fournie permettra d'obtenir l'id, la date, le libell�  et le montant des �l�ments hors forfait de la fiche de frais du visiteur  d'id $idVisiteur pour le mois $mois</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - texte de la requ�te select</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">string</span>
+			<b>$unMois</b> 
+			- 
+			mois demand� (MMAAAA)</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			id visiteur</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirReqMois"></a>
+	<h3>obtenirReqMois</h3>
+	<div class="indent">
+		<code>string obtenirReqMois(
+)</code>
+		<p class="linenumber">[line 223]</p>
+		<p align="center"><strong>Retourne le texte de la requ�te select concernant les mois pour lesquels un  visiteur a une fiche de frais.
+</strong></p>
+<p>La requ�te de s�lection fournie permettra d'obtenir les mois (AAAAMM) pour  lesquels le visiteur $unIdVisiteur a une fiche de frais.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - texte de la requ�te select</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionobtenirReqMoisFicheFrais"></a>
+	<h3>obtenirReqMoisFicheFrais</h3>
+	<div class="indent">
+		<code>string obtenirReqMoisFicheFrais(
+string $unIdVisiteur)</code>
+		<p class="linenumber">[line 209]</p>
+		<p align="center"><strong>Retourne le texte de la requ�te select concernant les mois pour lesquels un  visiteur a une fiche de frais.
+</strong></p>
+<p>La requ�te de s�lection fournie permettra d'obtenir les mois (AAAAMM) pour  lesquels le visiteur $unIdVisiteur a une fiche de frais.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - texte de la requ�te select</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">string</span>
+			<b>$unIdVisiteur</b> 
+			- 
+			id visiteur</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionsupprimerLigneHF"></a>
+	<h3>supprimerLigneHF</h3>
+	<div class="indent">
+		<code>void supprimerLigneHF(
+resource $idCnx,  $unIdLigneHF, string $idLigneHF)</code>
+		<p class="linenumber">[line 334]</p>
+		<p align="center"><strong>Supprime une ligne hors forfait.
+</strong></p>
+<p>Supprime dans la BD la ligne hors forfait d'id $unIdLigneHF</p>		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">string</span>
+			<b>$idLigneHF</b> 
+			- 
+			id de la ligne hors forfait</li>
+					<li>
+			<span class="type"></span>
+			<b>$unIdLigneHF</b> 
+			- 
+			</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="functionverifierInfosConnexion"></a>
+	<h3>verifierInfosConnexion</h3>
+	<div class="indent">
+		<code>array verifierInfosConnexion(
+resource $idCnx, string $unLogin, string $unMdp)</code>
+		<p class="linenumber">[line 398]</p>
+		<p align="center"><strong>Contr�le les informations de connexionn d'un utilisateur.
+</strong></p>
+<p>V�rifie si les informations de connexion $unLogin, $unMdp sont ou non valides  et dans quel table visiteur ou compable.  Retourne les informations de l'utilisateur sous forme de tableau associatif  dont les cl�s sont les noms des colonnes (id, nom, prenom, login, mdp)  si login et mot de passe existent, le bool�en false sinon.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - tableau associatif ou bool�en false</li>
+</ul>
+		
+		<h4>Parameters</h4>
+		<ul>
+					<li>
+			<span class="type">resource</span>
+			<b>$idCnx</b> 
+			- 
+			identifiant de connexion</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unLogin</b> 
+			- 
+			login</li>
+					<li>
+			<span class="type">string</span>
+			<b>$unMdp</b> 
+			- 
+			mot de passe</li>
+				</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+</div>
+	<div id="credit">
+		<hr>
+		Documentation generated on Tue, 16 Apr 2013 12:35:03 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+	</div>
+</div>
+</body>
+</html>

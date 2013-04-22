@@ -31,7 +31,8 @@
   $dateHF = lireDonnee("txtDateHF", "");
   $libelleHF = lireDonnee("txtLibelleHF", "");
   $montantHF = lireDonnee("txtMontantHF", "");
- 
+  $idTypeVehicule = lireDonnee("lstTypeVehicule", "");
+  
   // structure de décision sur les différentes étapes du cas d'utilisation
   if ($etape == "validerSaisie") { 
       // l'utilisateur valide les éléments forfaitisés         
@@ -41,7 +42,7 @@
           ajouterErreur($tabErreurs, "Chaque quantité doit être renseignée et numérique positive.");
       }
       else { // mise à jour des quantités des éléments forfaitisés
-          modifierEltsForfait($idConnexion, $mois, obtenirIdUserConnecte(),$tabQteEltsForfait);
+          modifierEltsForfait($idConnexion, $mois, obtenirIdUserConnecte(),$tabQteEltsForfait, $idTypeVehicule);
       }
   }                                                       
   elseif ($etape == "validerSuppressionLigneHF") {
@@ -98,6 +99,17 @@
                     size="10" maxlength="5"
                     title="Entrez la quantité de l'élément forfaitisé" 
                     value="<?php echo $quantite; ?>" />
+              <?php
+               if($idFraisForfait=="KM"){
+                   $req = "SELECT * FROM `typevehicule`";
+                   echo '<select name="lstTypeVehicule" class="zone">';
+                   $result1 = mysql_query($req,  $idConnexion);
+                   while ($vehicule = mysql_fetch_row($result1)) {
+                       echo '<option Value="'.$vehicule[0].'">'.$vehicule[1].'</option>';
+                   }
+                   echo '</select>';
+               }
+              ?>
             </p>
             <?php        
                 $lgEltForfait = mysql_fetch_assoc($idJeuEltsFraisForfait);   

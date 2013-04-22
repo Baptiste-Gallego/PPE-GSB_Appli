@@ -236,7 +236,17 @@ function obtenirListeVisiteur($idConnexion){
     }
     mysql_free_result($result);
 }
-                  
+
+function obtenirListeFicheFraisValide($idConnexion){
+    $req = "SELECT fichefrais.*, visiteur.nom
+            FROM fichefrais LEFT JOIN  visiteur ON (fichefrais.idVisiteur = visiteur.id)
+            WHERE idEtat = 'VA'";
+    $result = mysql_query($req, $idConnexion);
+    while ($nom = mysql_fetch_row($result)) {
+         echo '<option value="'.$nom[0].'">'.$nom[1].'</option>';
+    }
+    mysql_free_result($result);
+}
 /**
  * Retourne le texte de la requ�te select concernant les �l�ments forfaitis�s 
  * d'un visiteur pour un mois donn�s. 
@@ -354,7 +364,8 @@ function ajouterLigneHF($idCnx, $unMois, $unIdVisiteur, $uneDateHF, $unLibelleHF
  * dans $desEltsForfaits pour le visiteur $unIdVisiteur et
  * le mois $unMois dans la table LigneFraisForfait, apr�s avoir filtr� 
  * (annul� l'effet de certains caract�res consid�r�s comme sp�ciaux par 
- *  MySql) chaque donn�e   
+ *  MySql) chaque donn�e
+ * Si le type est donner en entrée il l'ajoute à la ligne   
  * @param resource $idCnx identifiant de connexion
  * @param string $unMois mois demand� (MMAAAA) 
  * @param string $unIdVisiteur  id visiteur
@@ -362,16 +373,20 @@ function ajouterLigneHF($idCnx, $unMois, $unIdVisiteur, $uneDateHF, $unLibelleHF
  * avec pour cl�s les identifiants des frais forfaitis�s 
  * @return void  
  */
-function modifierEltsForfait($idCnx, $unMois, $unIdVisiteur, $desEltsForfait) {
+function modifierEltsForfait($idCnx, $unMois, $unIdVisiteur, $desEltsForfait, $idTypeVehicule) {
     $unMois=filtrerChainePourBD($unMois);
     $unIdVisiteur=filtrerChainePourBD($unIdVisiteur);
     foreach ($desEltsForfait as $idFraisForfait => $quantite) {
-        $requete = "update LigneFraisForfait set quantite = " . $quantite 
-                    . " where idVisiteur = '" . $unIdVisiteur . "' and mois = '"
+        $requete = "update LigneFraisForfait set quantite = ".$quantite;
+        if($idFraisForfait=="KM"){
+            $requete .= ", idTypeVehicule='".$idTypeVehicule."'";
+        }         
+        $requete .= " where idVisiteur = '" . $unIdVisiteur . "' and mois = '"
                     . $unMois . "' and idFraisForfait='" . $idFraisForfait . "'";
       mysql_query($requete, $idCnx);
     }
 }
+
 
 /**
  * Contr�le les informations de connexionn d'un utilisateur.
@@ -393,7 +408,7 @@ function verifierInfosConnexion($idCnx, $unLogin, $unMdp) {
     
     
         // le mot de passe est crypt� dans la base avec la fonction de hachage md5
-        $req = "select id, nom, prenom, login, mdp, type from Visiteur where login='".$unLogin."' and mdp='" . $unMdp . "'";
+        $req = "select id, nom, prenom, login, mdp, typeVisiteur from Visiteur where login='".$unLogin."' and mdp='" . $unMdp . "'";
         $idJeuRes = mysql_query($req, $idCnx);
         $ligne = false;
         if(1 == mysql_num_rows($idJeuRes)){
@@ -446,12 +461,26 @@ function modifierLigneFraisForfait($idCnx, $quantite, $idVisiteur, $unMois, $idF
  * @param type $id
  * @param type $libelle
  * @param type $montant
+ * @param type $accepter
  */
-function modifierLigneFraisHorsForfait($idCnx, $id, $libelle, $montant){
+function modifierLigneFraisHorsForfait($idCnx, $id, $libelle, $montant, $accepter){
     $req = "UPDATE lignefraishorsforfait SET libelle='".$libelle."' , montant='".$montant."'
-        WHERE  id='".$id."'";
+        , accepter='".$accepter."' WHERE  id='".$id."'";
     mysql_query($req, $idCnx);
 }
 
-
+/**
+ * Modifie le montantValide en retirent le montant en entrer et la date de 
+ * modification d'une fiche de frais 
+ * @param resource $idCnx identifiant de connexion
+ * @param string $unIdVisiteur 
+ * @param string $unMontant
+ * @return void 
+ */
+function modifierMontantFicheFrais($idCnx, $unMois, $unIdVisiteur, $unMontant) {
+    $requete = "update FicheFrais set montantValide = montantValide-" . $unMontant . 
+               ", dateModif = now() where idVisiteur ='" .
+               $unIdVisiteur . "' and mois = '". $unMois . "'";
+    mysql_query($requete, $idCnx);
+}
 ?>
