@@ -11,4 +11,5 @@ ALTER TABLE `visiteur` CHANGE `typeVisiteur` `typeVisiteur` INT( 1 ) NOT NULL ;
 
 INSERT INTO visiteur 
 (id, nom ,prenom ,login ,mdp ,adresse ,cp ,ville ,dateEmbauche ,typeVisiteur)
-VALUES ('bts1', 'comptable', 'comptable', 'comptable', 'Btssio2013', '1 rue du comptable' , '43130' , 'Retournac' , '2013-01-01', '1')
+VALUES ('bts1', 'comptable', 'Bts', 'comptableBts', 'Btssio13', '1 rue du comptable' , '43130' , 'Retournac' , '2013-01-01', '1'),
+		('bts2', 'visiteur', 'Bts', 'visiteurBts', 'Btssio13', '1 rue du comptable' , '43130' , 'Retournac' , '2013-01-01', '0');

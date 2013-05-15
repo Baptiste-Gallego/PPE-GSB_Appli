@@ -90,7 +90,7 @@
                                         modifierLigneFraisForfait($idConnexion, $_POST['km'], $_POST['lstVisiteur'], $_POST['dateValid'], 'KM');                            
 
 
-                                        echo '<p class="info">la modification à été prise en compte<p>';
+                                        echo '<p class="info">la modification à été prise en compte<p';
                                     }
                                     //passe la fiche a l'etat validée
                                     if(isset($_POST['situ'])){

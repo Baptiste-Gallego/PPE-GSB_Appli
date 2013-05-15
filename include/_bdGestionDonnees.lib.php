@@ -75,7 +75,7 @@ function filtrerChainePourBD($str) {
  */
 function obtenirDetailVisiteur($idCnx, $unId) {
     $id = filtrerChainePourBD($unId);
-    $requete = "select id, nom, prenom, type from visiteur where id='" . $unId . "'";
+    $requete = "select id, nom, prenom, typeVisiteur from visiteur where id='" . $unId . "'";
     $idJeuRes = mysql_query($requete, $idCnx);  
     $ligne = false;     
     if ( $idJeuRes ) {
@@ -236,7 +236,10 @@ function obtenirListeVisiteur($idConnexion){
     }
     mysql_free_result($result);
 }
-
+/**
+ * Liste des friche de frais valider
+ * @param type $idConnexion
+ */
 function obtenirListeFicheFraisValide($idConnexion){
     $req = "SELECT fichefrais.*, visiteur.nom
             FROM fichefrais LEFT JOIN  visiteur ON (fichefrais.idVisiteur = visiteur.id)
@@ -266,6 +269,24 @@ function obtenirReqEltsForfaitFicheFrais($unMois, $unIdVisiteur) {
     return $requete;
 }
 
+/**
+ * Retourne le texte de la requ�te select concernant les �l�ments forfaitis�s avec le montant 
+ * d'un visiteur pour un mois donn�s. 
+ * 
+ * La requ�te de s�lection fournie permettra d'obtenir l'id, le libell� et la
+ * quantit� des �l�ments forfaitis�s de la fiche de frais du visiteur
+ * d'id $idVisiteur pour le mois $mois  
+ * @param type $unMois
+ * @param type $unIdVisiteur
+ * @return string
+ */
+function obtenirReqEltsForfaitFicheFraisPdf($unMois, $unIdVisiteur) {
+    $unMois = filtrerChainePourBD($unMois);
+    $requete = "select idFraisForfait, libelle, quantite, montant, idTypeVehicule from LigneFraisForfait
+              inner join FraisForfait on FraisForfait.id = LigneFraisForfait.idFraisForfait
+              where idVisiteur='" . $unIdVisiteur . "' and mois='" . $unMois . "'";
+    return $requete;
+}
 /**
  * Retourne le texte de la requ�te select concernant les �l�ments hors forfait 
  * d'un visiteur pour un mois donn�s. 
@@ -482,5 +503,14 @@ function modifierMontantFicheFrais($idCnx, $unMois, $unIdVisiteur, $unMontant) {
                ", dateModif = now() where idVisiteur ='" .
                $unIdVisiteur . "' and mois = '". $unMois . "'";
     mysql_query($requete, $idCnx);
+}
+
+function obtenirPrixAuKm($idCnx, $idTypeVechicule){
+    $req = "SELECT prixAuKm 
+            FROM typevehicule
+            WHERE id='".$idTypeVechicule."'";
+    $prixAuKm = mysql_query($req, $idCnx);
+    $resultat = mysql_fetch_array($prixAuKm);
+    return $resultat[0];
 }
 ?>

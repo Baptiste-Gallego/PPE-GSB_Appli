@@ -15,7 +15,7 @@
           $lgUser = obtenirDetailVisiteur($idConnexion, $idUser);
           $nom = $lgUser['nom'];
           $prenom = $lgUser['prenom'];
-          $type = $lgUser['type'];
+          $type = $lgUser['typeVisiteur'];
           
     ?>
         <h2>
